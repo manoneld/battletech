@@ -21,7 +21,7 @@ library(stringr)
 here::i_am("battletech.Rproj")
 ```
 
-### Data Loading
+### Data Loading : question 3 
 
 ``````{r}
 #| message: false
@@ -57,6 +57,22 @@ class(mass)
 
 luminosity <- database$"Luminosity"
 class(luminosity)
+```
+
+### Question 4 
+
+```{r}
+n_obs <- database |> count(nrow(database))
+n_obs
+n_variables <- database |> count(ncol(database))
+n_variables
+miss_values <- summarise_all(database, ~sum(is.na(.)))
+miss_values
+obs_one_miss_val <- sum(rowSums(is.na(database)) > 0)
+obs_one_miss_val
+
+kable(list(n_obs, n_variables, miss_values, obs_one_miss_val), caption = "Summary Statistics")
 
 ```
+
 

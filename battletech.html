@@ -130,8 +130,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </div>
 </section>
-<section id="data-loading" class="level3">
-<h3 class="anchored" data-anchor-id="data-loading">Data Loading</h3>
+<section id="data-loading-question-3" class="level3">
+<h3 class="anchored" data-anchor-id="data-loading-question-3">Data Loading : question 3</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>database <span class="ot">&lt;-</span> <span class="fu">vroom</span>(<span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"star+systems.csv"</span>), </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">delim =</span> <span class="st">":"</span>, </span>
@@ -179,6 +179,141 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(luminosity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "numeric"</code></pre>
+</div>
+</div>
+</section>
+<section id="question-4" class="level3">
+<h3 class="anchored" data-anchor-id="question-4">Question 4</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>n_obs <span class="ot">&lt;-</span> database <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="fu">nrow</span>(database))</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>n_obs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  `nrow(database)`     n
+             &lt;int&gt; &lt;int&gt;
+1             1035  1035</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>n_variables <span class="ot">&lt;-</span> database <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="fu">ncol</span>(database))</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>n_variables</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  `ncol(database)`     n
+             &lt;int&gt; &lt;int&gt;
+1                8  1035</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>miss_values <span class="ot">&lt;-</span> <span class="fu">summarise_all</span>(database, <span class="sc">~</span><span class="fu">sum</span>(<span class="fu">is.na</span>(.)))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>miss_values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 8
+  star_idx STAR_NAME DISTANCE (LIGHTYE…¹ EQUIV…² RELAT…³ STAR …⁴ Lumin…⁵ stell…⁶
+     &lt;int&gt;     &lt;int&gt;               &lt;int&gt;   &lt;int&gt;   &lt;int&gt;   &lt;int&gt;   &lt;int&gt;   &lt;int&gt;
+1        0         0                   0      47      47      47       0       0
+# … with abbreviated variable names ¹​`DISTANCE (LIGHTYEARS)`,
+#   ²​`EQUIVALENT TEMPERATURE`, ³​`RELATIVE MASS`, ⁴​`STAR RADIUS`, ⁵​Luminosity,
+#   ⁶​`stellar type`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>obs_one_miss_val <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">rowSums</span>(<span class="fu">is.na</span>(database)) <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>obs_one_miss_val</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 136</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">list</span>(n_obs, n_variables, miss_values, obs_one_miss_val), <span class="at">caption =</span> <span class="st">"Summary Statistics"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="kable_wrapper">
+<caption>
+Summary Statistics
+</caption>
+<tbody>
+<tr>
+<td>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: right;">nrow(database)</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1035</td>
+<td style="text-align: right;">1035</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: right;">ncol(database)</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">1035</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 19%">
+<col style="width: 20%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">star_idx</th>
+<th style="text-align: right;">STAR_NAME</th>
+<th style="text-align: right;">DISTANCE (LIGHTYEARS)</th>
+<th style="text-align: right;">EQUIVALENT TEMPERATURE</th>
+<th style="text-align: right;">RELATIVE MASS</th>
+<th style="text-align: right;">STAR RADIUS</th>
+<th style="text-align: right;">Luminosity</th>
+<th style="text-align: right;">stellar type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: right;">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">136</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+
+</table>
 </div>
 </div>
 </section>
