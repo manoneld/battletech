@@ -335,6 +335,930 @@ Summary Statistics
 </div>
 <p>Commentaires : nous constatons que plus la luminosité de l’étoile est élevée, plus sa température est élevée.</p>
 </section>
+<section id="question-6" class="level3">
+<h3 class="anchored" data-anchor-id="question-6">Question 6 :</h3>
+<p>avec 1 seul tableau (cela est loin d’être parfait car chaque planète n’a pas toutes les valeurs extrêmes simultanément)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>extreme_stars <span class="ot">&lt;-</span> database <span class="sc">|&gt;</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(mass <span class="sc">==</span> <span class="fu">max</span>(mass) <span class="sc">|</span> mass <span class="sc">==</span> <span class="fu">min</span>(mass) <span class="sc">|</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>         temperature <span class="sc">==</span> <span class="fu">max</span>(temperature) <span class="sc">|</span> temperature <span class="sc">==</span> <span class="fu">min</span>(temperature) <span class="sc">|</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>         luminosity <span class="sc">==</span> <span class="fu">max</span>(luminosity) <span class="sc">|</span> luminosity <span class="sc">==</span> <span class="fu">min</span>(luminosity) <span class="sc">|</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>         distance <span class="sc">==</span> <span class="fu">max</span>(distance) <span class="sc">|</span> distance <span class="sc">==</span> <span class="fu">min</span>(distance))</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(extreme_stars, <span class="at">caption =</span> <span class="st">"Most Extreme Stars"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<caption>Most Extreme Stars</caption>
+<colgroup>
+<col style="width: 7%">
+<col style="width: 13%">
+<col style="width: 18%">
+<col style="width: 19%">
+<col style="width: 11%">
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">star_idx</th>
+<th style="text-align: left;">STAR_NAME</th>
+<th style="text-align: right;">DISTANCE (LIGHTYEARS)</th>
+<th style="text-align: right;">EQUIVALENT TEMPERATURE</th>
+<th style="text-align: right;">RELATIVE MASS</th>
+<th style="text-align: right;">STAR RADIUS</th>
+<th style="text-align: right;">Luminosity</th>
+<th style="text-align: left;">stellar type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1179</td>
+<td style="text-align: left;">Ilion</td>
+<td style="text-align: right;">286.752</td>
+<td style="text-align: right;">2533</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-2-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2346</td>
+<td style="text-align: left;">Sirius</td>
+<td style="text-align: right;">8.267</td>
+<td style="text-align: right;">2775</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: left;">M-4-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2943</td>
+<td style="text-align: left;">Glory</td>
+<td style="text-align: right;">1838.239</td>
+<td style="text-align: right;">3006</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-3-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1174</td>
+<td style="text-align: left;">Igualada</td>
+<td style="text-align: right;">311.943</td>
+<td style="text-align: right;">3147</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-2-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2624</td>
+<td style="text-align: left;">Ulysses</td>
+<td style="text-align: right;">413.701</td>
+<td style="text-align: right;">3083</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-4-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2904</td>
+<td style="text-align: left;">Gaul</td>
+<td style="text-align: right;">708.540</td>
+<td style="text-align: right;">3400</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.52</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-2-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2277</td>
+<td style="text-align: left;">Sendai</td>
+<td style="text-align: right;">177.645</td>
+<td style="text-align: right;">2906</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-3-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1727</td>
+<td style="text-align: left;">Miyada</td>
+<td style="text-align: right;">395.274</td>
+<td style="text-align: right;">2484</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-0-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1853</td>
+<td style="text-align: left;">New Sumatra</td>
+<td style="text-align: right;">153.524</td>
+<td style="text-align: right;">2918</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-1-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2214</td>
+<td style="text-align: left;">Salardion</td>
+<td style="text-align: right;">396.437</td>
+<td style="text-align: right;">2648</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-5-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: left;">Persistence</td>
+<td style="text-align: right;">419.969</td>
+<td style="text-align: right;">2992</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.44</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-2-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">739</td>
+<td style="text-align: left;">Dreadlord</td>
+<td style="text-align: right;">586.050</td>
+<td style="text-align: right;">2634</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">0.63</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-7-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2482</td>
+<td style="text-align: left;">Tania Australis</td>
+<td style="text-align: right;">154.806</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.35</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-4-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">482</td>
+<td style="text-align: left;">Carnwath</td>
+<td style="text-align: right;">103.787</td>
+<td style="text-align: right;">2605</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">0.37</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-5-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3043</td>
+<td style="text-align: left;">Waystation 531</td>
+<td style="text-align: right;">1540.049</td>
+<td style="text-align: right;">2525</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">0.14</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-8-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2651</td>
+<td style="text-align: left;">Valloire</td>
+<td style="text-align: right;">386.165</td>
+<td style="text-align: right;">3035</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.39</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-2-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1173</td>
+<td style="text-align: left;">Ife</td>
+<td style="text-align: right;">296.874</td>
+<td style="text-align: right;">2841</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-4-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1716</td>
+<td style="text-align: left;">Minowa</td>
+<td style="text-align: right;">241.777</td>
+<td style="text-align: right;">2809</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-5-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">249</td>
+<td style="text-align: left;">Bamburgh</td>
+<td style="text-align: right;">622.487</td>
+<td style="text-align: right;">2623</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">0.34</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-1-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2742</td>
+<td style="text-align: left;">Weiz</td>
+<td style="text-align: right;">305.921</td>
+<td style="text-align: right;">2820</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-4-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2148</td>
+<td style="text-align: left;">Rexburg</td>
+<td style="text-align: right;">211.395</td>
+<td style="text-align: right;">2691</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.56</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-4-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3147</td>
+<td style="text-align: left;">Taygete</td>
+<td style="text-align: right;">482.001</td>
+<td style="text-align: right;">3082</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-4-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">499</td>
+<td style="text-align: left;">Ceará</td>
+<td style="text-align: right;">391.473</td>
+<td style="text-align: right;">2472</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-8-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">250</td>
+<td style="text-align: left;">Ban Na San</td>
+<td style="text-align: right;">422.107</td>
+<td style="text-align: right;">3268</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-1-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1744</td>
+<td style="text-align: left;">Monistrol</td>
+<td style="text-align: right;">201.714</td>
+<td style="text-align: right;">2553</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-7-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">416</td>
+<td style="text-align: left;">Buena</td>
+<td style="text-align: right;">402.015</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.54</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-5-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">677</td>
+<td style="text-align: left;">Deia</td>
+<td style="text-align: right;">351.022</td>
+<td style="text-align: right;">2722</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">0.46</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-1-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3164</td>
+<td style="text-align: left;">Tarragona</td>
+<td style="text-align: right;">525.572</td>
+<td style="text-align: right;">3192</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.48</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-1-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2263</td>
+<td style="text-align: left;">Schrim</td>
+<td style="text-align: right;">647.911</td>
+<td style="text-align: right;">2520</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-2-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">880</td>
+<td style="text-align: left;">Flaum</td>
+<td style="text-align: right;">453.727</td>
+<td style="text-align: right;">3104</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.38</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-2-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">771</td>
+<td style="text-align: left;">Edmondson</td>
+<td style="text-align: right;">353.987</td>
+<td style="text-align: right;">2678</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-5-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1792</td>
+<td style="text-align: left;">Naka Pabni</td>
+<td style="text-align: right;">477.362</td>
+<td style="text-align: right;">2433</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-1-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">927</td>
+<td style="text-align: left;">Galuzzo</td>
+<td style="text-align: right;">251.434</td>
+<td style="text-align: right;">2493</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-5-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2227</td>
+<td style="text-align: left;">Sanilac</td>
+<td style="text-align: right;">158.705</td>
+<td style="text-align: right;">5643</td>
+<td style="text-align: right;">0.9</td>
+<td style="text-align: right;">1.03</td>
+<td style="text-align: right;">1.49</td>
+<td style="text-align: left;">G-4-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">209</td>
+<td style="text-align: left;">August</td>
+<td style="text-align: right;">169.534</td>
+<td style="text-align: right;">2671</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.51</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-7-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">255</td>
+<td style="text-align: left;">Banori</td>
+<td style="text-align: right;">509.596</td>
+<td style="text-align: right;">2476</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.32</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-4-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2434</td>
+<td style="text-align: left;">Summerstide</td>
+<td style="text-align: right;">551.739</td>
+<td style="text-align: right;">2552</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-3-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2061</td>
+<td style="text-align: left;">Predlitz</td>
+<td style="text-align: right;">357.288</td>
+<td style="text-align: right;">2884</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-5-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2123</td>
+<td style="text-align: left;">Rasalhague</td>
+<td style="text-align: right;">391.740</td>
+<td style="text-align: right;">2468</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-8-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2534</td>
+<td style="text-align: left;">Thirty Weight</td>
+<td style="text-align: right;">289.985</td>
+<td style="text-align: right;">2753</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-3-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2565</td>
+<td style="text-align: left;">Tordenskjold</td>
+<td style="text-align: right;">591.644</td>
+<td style="text-align: right;">3271</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.53</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-2-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2045</td>
+<td style="text-align: left;">Pojos</td>
+<td style="text-align: right;">386.641</td>
+<td style="text-align: right;">2478</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-8-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">302</td>
+<td style="text-align: left;">Benjamin</td>
+<td style="text-align: right;">182.944</td>
+<td style="text-align: right;">2953</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-5-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2296</td>
+<td style="text-align: left;">Shaul Khala</td>
+<td style="text-align: right;">256.784</td>
+<td style="text-align: right;">2413</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-5-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1266</td>
+<td style="text-align: left;">Juazeiro</td>
+<td style="text-align: right;">342.663</td>
+<td style="text-align: right;">2684</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-5-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">806</td>
+<td style="text-align: left;">Enif</td>
+<td style="text-align: right;">517.167</td>
+<td style="text-align: right;">2602</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-3-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2882</td>
+<td style="text-align: left;">Albiero</td>
+<td style="text-align: right;">387.205</td>
+<td style="text-align: right;">2455</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-8-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2919</td>
+<td style="text-align: left;">Regis Roost</td>
+<td style="text-align: right;">468.121</td>
+<td style="text-align: right;">2742</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-0-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">955</td>
+<td style="text-align: left;">Gillingham</td>
+<td style="text-align: right;">543.516</td>
+<td style="text-align: right;">2546</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-1-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1410</td>
+<td style="text-align: left;">Krakatau</td>
+<td style="text-align: right;">349.279</td>
+<td style="text-align: right;">3351</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-1-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">426</td>
+<td style="text-align: left;">Cabanatuan</td>
+<td style="text-align: right;">535.102</td>
+<td style="text-align: right;">2732</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-5-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2897</td>
+<td style="text-align: left;">Dormandaine</td>
+<td style="text-align: right;">473.168</td>
+<td style="text-align: right;">3267</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-1-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2962</td>
+<td style="text-align: left;">Strato Domingo</td>
+<td style="text-align: right;">1880.689</td>
+<td style="text-align: right;">3913</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">0.77</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: left;">K-3-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1585</td>
+<td style="text-align: left;">Mandeville</td>
+<td style="text-align: right;">727.345</td>
+<td style="text-align: right;">3148</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-2-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2709</td>
+<td style="text-align: left;">Waimalu</td>
+<td style="text-align: right;">445.450</td>
+<td style="text-align: right;">3040</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-2-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">314</td>
+<td style="text-align: left;">Betelgeuse</td>
+<td style="text-align: right;">306.955</td>
+<td style="text-align: right;">2935</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.63</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-5-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1806</td>
+<td style="text-align: left;">Negushevo</td>
+<td style="text-align: right;">396.623</td>
+<td style="text-align: right;">3095</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-2-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Piedmont</td>
+<td style="text-align: right;">111.134</td>
+<td style="text-align: right;">2499</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">0.28</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-1-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1512</td>
+<td style="text-align: left;">Lonaconing</td>
+<td style="text-align: right;">454.760</td>
+<td style="text-align: right;">2581</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.27</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-1-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1710</td>
+<td style="text-align: left;">Milvano</td>
+<td style="text-align: right;">463.550</td>
+<td style="text-align: right;">2905</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-2-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">489</td>
+<td style="text-align: left;">Caselton</td>
+<td style="text-align: right;">119.999</td>
+<td style="text-align: right;">5463</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.13</td>
+<td style="text-align: right;">1.49</td>
+<td style="text-align: left;">G-4-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1733</td>
+<td style="text-align: left;">Mkuranga</td>
+<td style="text-align: right;">355.783</td>
+<td style="text-align: right;">2720</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-1-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2253</td>
+<td style="text-align: left;">Sawyer</td>
+<td style="text-align: right;">465.727</td>
+<td style="text-align: right;">2925</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.27</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-2-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2980</td>
+<td style="text-align: left;">Valencia</td>
+<td style="text-align: right;">1328.372</td>
+<td style="text-align: right;">2758</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-5-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">349</td>
+<td style="text-align: left;">Bluford</td>
+<td style="text-align: right;">454.568</td>
+<td style="text-align: right;">3039</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.19</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-3-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2703</td>
+<td style="text-align: left;">Vortalcoy</td>
+<td style="text-align: right;">491.941</td>
+<td style="text-align: right;">5447</td>
+<td style="text-align: right;">0.8</td>
+<td style="text-align: right;">1.04</td>
+<td style="text-align: right;">1.49</td>
+<td style="text-align: left;">G-5-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2332</td>
+<td style="text-align: left;">Sighisoara</td>
+<td style="text-align: right;">385.029</td>
+<td style="text-align: right;">2462</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-4-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3098</td>
+<td style="text-align: left;">Halkidik</td>
+<td style="text-align: right;">1002.899</td>
+<td style="text-align: right;">2493</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">0.12</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-7-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1734</td>
+<td style="text-align: left;">Modesto</td>
+<td style="text-align: right;">554.978</td>
+<td style="text-align: right;">2721</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-1-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2117</td>
+<td style="text-align: left;">Ramsau</td>
+<td style="text-align: right;">222.518</td>
+<td style="text-align: right;">2610</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-3-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1582</td>
+<td style="text-align: left;">Mandaoaaru</td>
+<td style="text-align: right;">433.144</td>
+<td style="text-align: right;">2720</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-1-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3100</td>
+<td style="text-align: left;">Hibernia</td>
+<td style="text-align: right;">992.235</td>
+<td style="text-align: right;">3029</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-3-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1700</td>
+<td style="text-align: left;">Midthun</td>
+<td style="text-align: right;">391.180</td>
+<td style="text-align: right;">2568</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-0-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">710</td>
+<td style="text-align: left;">Dickinson</td>
+<td style="text-align: right;">184.937</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-1-V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">267</td>
+<td style="text-align: left;">Basantapur</td>
+<td style="text-align: right;">462.307</td>
+<td style="text-align: right;">2565</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">0.59</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-5-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2525</td>
+<td style="text-align: left;">Thannhausen</td>
+<td style="text-align: right;">292.173</td>
+<td style="text-align: right;">2894</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">M-0-V</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>j’ai essayé avec 3 tableaux différents mais les deux premiers ne s’affichent pas correctement, je ne trouve pas le problème et manque de temps</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>extreme_mass <span class="ot">&lt;-</span> database <span class="sc">|&gt;</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(mass <span class="sc">==</span> <span class="fu">max</span>(mass) <span class="sc">|</span> mass <span class="sc">==</span> <span class="fu">min</span>(mass))</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>extreme_temperature <span class="ot">&lt;-</span> database <span class="sc">|&gt;</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(temperature <span class="sc">==</span> <span class="fu">max</span>(temperature) <span class="sc">|</span> temperature <span class="sc">==</span> <span class="fu">min</span>(temperature))</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>extreme_distance <span class="ot">&lt;-</span> database <span class="sc">|&gt;</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(distance <span class="sc">==</span> <span class="fu">max</span>(distance) <span class="sc">|</span> distance <span class="sc">==</span> <span class="fu">min</span>(distance))</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(extreme_mass, <span class="at">caption =</span> <span class="st">"Most Extreme Stars - Mass"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table style="width:100%;">
+<caption>Most Extreme Stars - Mass</caption>
+<colgroup>
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 19%">
+<col style="width: 20%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">star_idx</th>
+<th style="text-align: left;">STAR_NAME</th>
+<th style="text-align: right;">DISTANCE (LIGHTYEARS)</th>
+<th style="text-align: right;">EQUIVALENT TEMPERATURE</th>
+<th style="text-align: right;">RELATIVE MASS</th>
+<th style="text-align: right;">STAR RADIUS</th>
+<th style="text-align: right;">Luminosity</th>
+<th style="text-align: left;">stellar type</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(extreme_temperature, <span class="at">caption =</span> <span class="st">"Most Extreme Stars - Temperature"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table style="width:100%;">
+<caption>Most Extreme Stars - Temperature</caption>
+<colgroup>
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 19%">
+<col style="width: 20%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">star_idx</th>
+<th style="text-align: left;">STAR_NAME</th>
+<th style="text-align: right;">DISTANCE (LIGHTYEARS)</th>
+<th style="text-align: right;">EQUIVALENT TEMPERATURE</th>
+<th style="text-align: right;">RELATIVE MASS</th>
+<th style="text-align: right;">STAR RADIUS</th>
+<th style="text-align: right;">Luminosity</th>
+<th style="text-align: left;">stellar type</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(extreme_distance, <span class="at">caption =</span> <span class="st">"Most Extreme Stars - Distance"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<caption>Most Extreme Stars - Distance</caption>
+<colgroup>
+<col style="width: 7%">
+<col style="width: 12%">
+<col style="width: 18%">
+<col style="width: 19%">
+<col style="width: 11%">
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">star_idx</th>
+<th style="text-align: left;">STAR_NAME</th>
+<th style="text-align: right;">DISTANCE (LIGHTYEARS)</th>
+<th style="text-align: right;">EQUIVALENT TEMPERATURE</th>
+<th style="text-align: right;">RELATIVE MASS</th>
+<th style="text-align: right;">STAR RADIUS</th>
+<th style="text-align: right;">Luminosity</th>
+<th style="text-align: left;">stellar type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2346</td>
+<td style="text-align: left;">Sirius</td>
+<td style="text-align: right;">8.267</td>
+<td style="text-align: right;">2775</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: left;">M-4-V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2962</td>
+<td style="text-align: left;">Strato Domingo</td>
+<td style="text-align: right;">1880.689</td>
+<td style="text-align: right;">3913</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">0.77</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: left;">K-3-V</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
 
 </main>
 <!-- /main column -->

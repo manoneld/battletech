@@ -90,4 +90,37 @@ ggplot(database, aes(x = `Luminosity`, y = `EQUIVALENT TEMPERATURE`)) +
 ```
 Commentaires : nous constatons que plus la luminosité de l'étoile est élevée, plus sa température est élevée. 
 
+### Question 6 :
+
+avec 1 seul tableau (cela est loin d'être parfait car chaque planète n'a pas toutes les valeurs extrêmes simultanément)
+
+```{r}
+extreme_stars <- database |>
+  filter(mass == max(mass) | mass == min(mass) |
+         temperature == max(temperature) | temperature == min(temperature) |
+         luminosity == max(luminosity) | luminosity == min(luminosity) |
+         distance == max(distance) | distance == min(distance))
+
+kable(extreme_stars, caption = "Most Extreme Stars")
+```
+
+j'ai essayé avec 3 tableaux différents mais les deux premiers ne s'affichent pas correctement, je ne trouve pas le problème et manque de temps
+
+```{r}
+extreme_mass <- database |>
+  filter(mass == max(mass) | mass == min(mass))
+
+extreme_temperature <- database |>
+  filter(temperature == max(temperature) | temperature == min(temperature))
+
+extreme_distance <- database |>
+  filter(distance == max(distance) | distance == min(distance))
+
+kable(extreme_mass, caption = "Most Extreme Stars - Mass")
+kable(extreme_temperature, caption = "Most Extreme Stars - Temperature")
+kable(extreme_distance, caption = "Most Extreme Stars - Distance")
+```
+
+
+
 
