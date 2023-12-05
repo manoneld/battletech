@@ -121,6 +121,24 @@ kable(extreme_temperature, caption = "Most Extreme Stars - Temperature")
 kable(extreme_distance, caption = "Most Extreme Stars - Distance")
 ```
 
+### Question 7 
+
+### Question 8 
+
+```{r}
+#| message: false
+factions <- vroom(here("data","Factions.csv"), 
+                  delim = ":", 
+                  na = c("Unknown", "NA"), 
+                  quote = "\"")
+syst_control <- vroom(here("data","Systemcontrol.csv"), 
+                  delim = ":", 
+                  na = c("Unknown", "NA"), 
+                  quote = "\"")
+```
+
+### Question 9 
+
 
 
 
