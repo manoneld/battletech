@@ -1309,12 +1309,20 @@ Summary Statistics
 </table>
 </div>
 </div>
+<p>Il y a par exemple 3 étoiles abandonnées</p>
 </section>
 <section id="question-10" class="level3">
 <h3 class="anchored" data-anchor-id="question-10">Question 10</h3>
 <div class="cell">
-
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>missing_systems <span class="ot">&lt;-</span> factions <span class="sc">|&gt;</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(syst_control, <span class="at">by =</span> <span class="st">"Fidx"</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>nb_of_missing_systems <span class="ot">&lt;-</span> <span class="fu">nrow</span>(missing_systems)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>nb_of_missing_systems</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 125</code></pre>
 </div>
+</div>
+<p>There are 125 systems that cannot be found in the Systemcon- trol.csv file.</p>
 </section>
 
 </main>

@@ -147,11 +147,16 @@ table_count <- syst_control |>
 
 kable(table_count)
 ```
+Il y a par exemple 3 étoiles abandonnées 
 
 ### Question 10 
 
 ```{r}
-
+missing_systems <- factions |>
+  anti_join(syst_control, by = "Fidx")
+nb_of_missing_systems <- nrow(missing_systems)
+nb_of_missing_systems
 ```
 
+There are 125 systems that cannot be found in the Systemcon- trol.csv file.
 
