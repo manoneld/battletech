@@ -163,6 +163,8 @@ There are 125 systems that cannot be found in the Systemcon- trol.csv file.
 ### Question 11
 
 ```{r}
+#We select only the variable Fidx 
+
 syst_control_subset <- syst_control |>
   select(Fidx)
 
@@ -189,7 +191,13 @@ ggplot(syst_counts_filtered, aes(x = reorder(Fidx, -n), y = n)) +
 On merge les trois database ensemble
 
 ```{r}
+
+#We merge the database syst£_control and factions by the variable that they have in common i.e Fidx 
+
 merged_data <- inner_join(syst_control, factions, by = "Fidx")
+
+#We merge the database merged_data and the initial database by the variable that they have in common i.e star_idx 
+
 merged_data_final <- inner_join(merged_data, database, by = "star_idx")
 ```
 
@@ -197,6 +205,8 @@ merged_data_final <- inner_join(merged_data, database, by = "star_idx")
 #We exclude the  non real factions avec "!: 
 merged_data_final_filtered <- merged_data_final |>
   filter(!Fidx %in% c("A", "I", "U"))  
+
+#Graphic : distance of the sun (Variable = DISTANCE (LIGHTYEARS)`, conditionned by the controlling faction i.e by the variable "Fidx" 
 
 ggplot(merged_data_final_filtered, aes(x = Fidx, y = `DISTANCE (LIGHTYEARS)`)) +
   geom_boxplot(fill = "skyblue") +
@@ -211,7 +221,7 @@ ggplot(merged_data_final_filtered, aes(x = Fidx, y = `DISTANCE (LIGHTYEARS)`)) +
 closest_stars <- merged_data_final_filtered |>
   group_by(Fidx) |>
   summarise("Closest Star" = STAR_NAME[which.min(`DISTANCE (LIGHTYEARS)`)], 
-            Distance = min(`DISTANCE (LIGHTYEARS)`, na.rm = TRUE))
+            "Distance" = min(`DISTANCE (LIGHTYEARS)`, na.rm = TRUE))
 
 closest_stars |> knitr::kable()
 ```
