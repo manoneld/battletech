@@ -139,6 +139,19 @@ syst_control <- vroom(here("data","Systemcontrol.csv"),
 
 ### Question 9 
 
+```{r}
+table_count <- syst_control |>
+  filter(Fidx %in% c("A", "I", "U")) |>
+  group_by(Fidx) |>
+  summarise(Nombre = n())
 
+kable(table_count)
+```
+
+### Question 10 
+
+```{r}
+
+```
 
 
