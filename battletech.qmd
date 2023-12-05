@@ -160,7 +160,7 @@ nb_of_missing_systems
 
 There are 125 systems that cannot be found in the Systemcon- trol.csv file.
 
-### question 11
+### Question 11
 
 ```{r}
 syst_control_subset <- syst_control |>
@@ -175,14 +175,36 @@ syst_counts <- syst_control_subset |>
 syst_counts_filtered <- syst_counts|>
   filter(n > 0)
 
-# bar plot car variable quantitaive discrète
+# bar plot car variable quantitative discrètes
 ggplot(syst_counts_filtered, aes(x = reorder(Fidx, -n), y = n)) +
   geom_bar(stat = "identity", fill = "skyblue") +
   labs(title = "Number of Star Systems Controlled by Each Faction",
        x = "Faction",
        y = "Number of Star Systems") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
 ```
+
+### Question 12
+
+On merge les trois database ensemble
+
+```{r}
+merged_data <- inner_join(syst_control, factions, by = "Fidx")
+merged_data_final <- inner_join(merged_data, database, by = "star_idx")
+```
+
+```{r}
+#We exclude the the non real factions avec "!: 
+merged_data_final_filtered <- merged_data_final |>
+  filter(!Fidx %in% c("A", "I", "U"))  
+
+ggplot(merged_data_final_filtered, aes(x = Fidx, y = `DISTANCE (LIGHTYEARS)`)) +
+  geom_boxplot(fill = "skyblue") +
+  labs(title = "Distance to the Sun of Star Systems by Controlling Faction",
+       x = "Controlling Faction",
+       y = "Distance to the Sun (Lightyears)")
+```
+
+
 
 
