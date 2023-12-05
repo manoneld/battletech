@@ -6,3 +6,57 @@ editor: visual
 github-repository : https://github.com/manoneld/battletech.git
 ---
 
+#### R configuration
+
+```{r}
+#| echo: false 
+#| message: false
+library(here)
+library(knitr)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(vroom)
+library(stringr)
+here::i_am("battletech.Rproj")
+```
+
+### Data Loading
+
+``````{r}
+#| message: false
+database <- vroom(here("data","star+systems.csv"), 
+                  delim = ":", 
+                  na = c("Unknown", "NA"), 
+                  quote = "\"")
+```
+
+The number of observations is  `r nrow(database)` described by `r ncol(database)` variables
+
+```{r}
+star_name <- database$"STAR_NAME"
+class(star_name) #character
+
+distance <- database$"DISTANCE (LIGHTYEARS)"
+class(distance) #numeric (check verified)
+
+stellar_type <- database$"stellar type"
+class(stellar_type) #character 
+
+star_idx <- database$"star_idx"
+class(star_idx)
+
+temperature <- database$ "EQUIVALENT TEMPERATURE"
+class(temperature)
+
+radius <- database$"STAR RADIUS"
+class(radius)
+  
+mass <- database$"RELATIVE MASS"
+class(mass)
+
+luminosity <- database$"Luminosity"
+class(luminosity)
+
+```
+
