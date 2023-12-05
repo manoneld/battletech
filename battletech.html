@@ -1359,7 +1359,7 @@ Summary Statistics
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>merged_data_final <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(merged_data, database, <span class="at">by =</span> <span class="st">"star_idx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#We exclude the the non real factions avec "!: </span></span>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#We exclude the  non real factions avec "!: </span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>merged_data_final_filtered <span class="ot">&lt;-</span> merged_data_final <span class="sc">|&gt;</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>Fidx <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"I"</span>, <span class="st">"U"</span>))  </span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1370,6 +1370,115 @@ Summary Statistics
 <span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Distance to the Sun (Lightyears)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="battletech_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="question-13" class="level3">
+<h3 class="anchored" data-anchor-id="question-13">Question 13</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>closest_stars <span class="ot">&lt;-</span> merged_data_final_filtered <span class="sc">|&gt;</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Fidx) <span class="sc">|&gt;</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="st">"Closest Star"</span> <span class="ot">=</span> STAR_NAME[<span class="fu">which.min</span>(<span class="st">`</span><span class="at">DISTANCE (LIGHTYEARS)</span><span class="st">`</span>)], </span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Distance =</span> <span class="fu">min</span>(<span class="st">`</span><span class="at">DISTANCE (LIGHTYEARS)</span><span class="st">`</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>closest_stars <span class="sc">|&gt;</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Fidx</th>
+<th style="text-align: left;">Closest Star</th>
+<th style="text-align: right;">Distance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AP</td>
+<td style="text-align: left;">Kebili</td>
+<td style="text-align: right;">969.362</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CC</td>
+<td style="text-align: left;">Terra Firma</td>
+<td style="text-align: right;">40.454</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DC</td>
+<td style="text-align: left;">Moore</td>
+<td style="text-align: right;">64.313</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FFR</td>
+<td style="text-align: left;">Elba</td>
+<td style="text-align: right;">516.187</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FS</td>
+<td style="text-align: left;">New Florence</td>
+<td style="text-align: right;">91.356</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FWL</td>
+<td style="text-align: left;">Tabit</td>
+<td style="text-align: right;">43.576</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">IP</td>
+<td style="text-align: left;">Trondheimal</td>
+<td style="text-align: right;">463.951</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">LC</td>
+<td style="text-align: left;">Alkalurops</td>
+<td style="text-align: right;">57.737</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LL</td>
+<td style="text-align: left;">Lothario</td>
+<td style="text-align: right;">509.453</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MOC</td>
+<td style="text-align: left;">Borgan’s Rift</td>
+<td style="text-align: right;">425.268</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NC</td>
+<td style="text-align: left;">Galicia</td>
+<td style="text-align: right;">1322.660</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NDC</td>
+<td style="text-align: left;">Karpathos</td>
+<td style="text-align: right;">984.419</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">OA</td>
+<td style="text-align: left;">Crestoblus</td>
+<td style="text-align: right;">463.634</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SLIE</td>
+<td style="text-align: left;">Arcadia</td>
+<td style="text-align: right;">1612.952</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TC</td>
+<td style="text-align: left;">Jansen’s Hold</td>
+<td style="text-align: right;">420.649</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TD</td>
+<td style="text-align: left;">Tortuga Prime</td>
+<td style="text-align: right;">704.530</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">Sirius</td>
+<td style="text-align: right;">8.267</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </section>

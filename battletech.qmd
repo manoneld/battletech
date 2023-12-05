@@ -194,7 +194,7 @@ merged_data_final <- inner_join(merged_data, database, by = "star_idx")
 ```
 
 ```{r}
-#We exclude the the non real factions avec "!: 
+#We exclude the  non real factions avec "!: 
 merged_data_final_filtered <- merged_data_final |>
   filter(!Fidx %in% c("A", "I", "U"))  
 
@@ -203,6 +203,17 @@ ggplot(merged_data_final_filtered, aes(x = Fidx, y = `DISTANCE (LIGHTYEARS)`)) +
   labs(title = "Distance to the Sun of Star Systems by Controlling Faction",
        x = "Controlling Faction",
        y = "Distance to the Sun (Lightyears)")
+```
+
+### Question 13 
+
+```{r}
+closest_stars <- merged_data_final_filtered |>
+  group_by(Fidx) |>
+  summarise("Closest Star" = STAR_NAME[which.min(`DISTANCE (LIGHTYEARS)`)], 
+            Distance = min(`DISTANCE (LIGHTYEARS)`, na.rm = TRUE))
+
+closest_stars |> knitr::kable()
 ```
 
 
