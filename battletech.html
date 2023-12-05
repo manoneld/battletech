@@ -316,6 +316,24 @@ Summary Statistics
 </table>
 </div>
 </div>
+<p>nrow(database) : nombre d’observations ncol(database) : nombre de variables nombre de donénes manquantes par variables x : nombres d’observations avec au moins une valeur manquante</p>
+</section>
+<section id="question-5-graphique-1-scatter-plot" class="level3">
+<h3 class="anchored" data-anchor-id="question-5-graphique-1-scatter-plot">Question 5 : graphique 1 = scatter plot</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(database, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Luminosity</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">EQUIVALENT TEMPERATURE</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Temperature vs. Luminosity of Stars"</span>,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Luminosity"</span>,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Equivalent Temperature"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 47 rows containing missing values (`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="battletech_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Commentaires : nous constatons que plus la luminosité de l’étoile est élevée, plus sa température est élevée.</p>
 </section>
 
 </main>

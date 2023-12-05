@@ -72,7 +72,22 @@ obs_one_miss_val <- sum(rowSums(is.na(database)) > 0)
 obs_one_miss_val
 
 kable(list(n_obs, n_variables, miss_values, obs_one_miss_val), caption = "Summary Statistics")
-
 ```
+
+nrow(database) : nombre d'observations
+ncol(database) : nombre de variables 
+nombre de donénes manquantes par variables
+x : nombres d'observations avec au moins une valeur manquante 
+
+### Question 5 : graphique 1 = scatter plot
+
+```{r}
+ggplot(database, aes(x = `Luminosity`, y = `EQUIVALENT TEMPERATURE`)) +
+  geom_point() +
+  labs(title = "Temperature vs. Luminosity of Stars",
+       x = "Luminosity",
+       y = "Equivalent Temperature")
+```
+Commentaires : nous constatons que plus la luminosité de l'étoile est élevée, plus sa température est élevée. 
 
 
